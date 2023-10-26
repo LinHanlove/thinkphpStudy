@@ -51,9 +51,9 @@ class UserModel extends Model
     protected $json = ['list'];
 
 //    开启软删除
-    use SoftDelete;
+//    use SoftDelete;
 
-    protected $deleteTime = 'delete_time';
+//    protected $deleteTime = 'delete_time';
 
 //    获取器
 //    public function getNameAttr($id)

@@ -49,9 +49,15 @@ use app\model\UserModel;
  */
 class  AssociationModel
 {
-    public function index()
+//    public function index()
+//    {
+//        $user = UserModel::find(2);
+//        return json($user);
+//    }
+
+    public function load()
     {
-        $user = UserModel::find(2);
-        return json($user);
+        $user = UserModel::select([14, 15, 16]);
+
     }
 }
