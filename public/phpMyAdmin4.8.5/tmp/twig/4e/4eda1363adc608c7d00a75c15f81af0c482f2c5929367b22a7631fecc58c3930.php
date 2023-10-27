@@ -353,10 +353,10 @@ $context["subpartition"], "engine", [], "array"), false, true);
                     // line 147
                     echo "                        <textarea name=\"";
                     echo twig_escape_filter($this->env, $this->getAttribute($context["subpartition"], "prefix", [], "array"), "html", null, true);
-                    echo "[comment]\">
+                    echo "[common]\">
                             ";
                     // line 148
-                    echo twig_escape_filter($this->env, $this->getAttribute($context["subpartition"], "comment", [], "array"), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["subpartition"], "common", [], "array"), "html", null, true);
                     echo "
                         </textarea>
                         ";

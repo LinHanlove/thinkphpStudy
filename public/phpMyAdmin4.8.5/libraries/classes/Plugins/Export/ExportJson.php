@@ -116,7 +116,7 @@ class ExportJson extends ExportPlugin
         $meta = array(
             'type' => 'header',
             'version' => PMA_VERSION,
-            'comment' => 'Export to JSON plugin for PHPMyAdmin',
+            'common' => 'Export to JSON plugin for PHPMyAdmin',
         );
 
         return Export::outputHandler(
@@ -255,7 +255,7 @@ class ExportJson extends ExportPlugin
 
             $record_cnt++;
 
-            // Output table name as comment if this is the first record of the table
+            // Output table name as common if this is the first record of the table
             if ($record_cnt > 1) {
                 if (!Export::outputHandler(',' . $crlf)) {
                     return false;

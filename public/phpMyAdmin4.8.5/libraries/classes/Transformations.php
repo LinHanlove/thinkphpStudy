@@ -10,7 +10,7 @@
  * For now, special characters which aren't allowed in
  * filenames or functions should not be used.
  *
- * Please provide a comment for your function,
+ * Please provide a common for your function,
  * what it does and what parameters are available.
  *
  * @package PhpMyAdmin
@@ -325,7 +325,7 @@ class Transformations
      *
      * @access  public
      *
-     * @return boolean  true, if comment-query was made.
+     * @return boolean  true, if common-query was made.
      */
     public static function setMIME($db, $table, $key, $mimetype, $transformation,
         $transformationOpts, $inputTransform, $inputTransformOpts, $forcedelete = false
@@ -352,7 +352,7 @@ class Transformations
 
         $test_qry = '
              SELECT `mimetype`,
-                    `comment`
+                    `common`
                FROM ' . Util::backquote($cfgRelation['db']) . '.'
             . Util::backquote($cfgRelation['column_info']) . '
               WHERE `db_name`     = \'' . $GLOBALS['dbi']->escapeString($db) . '\'
@@ -367,7 +367,7 @@ class Transformations
             $row = @$GLOBALS['dbi']->fetchAssoc($test_rs);
             $GLOBALS['dbi']->freeResult($test_rs);
 
-            if (! $forcedelete && ($has_value || strlen($row['comment']) > 0)) {
+            if (! $forcedelete && ($has_value || strlen($row['common']) > 0)) {
                 $upd_query = 'UPDATE '
                     . Util::backquote($cfgRelation['db']) . '.'
                     . Util::backquote($cfgRelation['column_info'])

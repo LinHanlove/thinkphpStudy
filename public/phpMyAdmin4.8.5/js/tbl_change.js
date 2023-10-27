@@ -321,7 +321,7 @@ AJAX.registerTeardown('tbl_change.js', function () {
  */
 AJAX.registerOnload('tbl_change.js', function () {
     if ($('#insertForm').length) {
-        // validate the comment form when it is submitted
+        // validate the common form when it is submitted
         $('#insertForm').validate();
         jQuery.validator.addMethod('validationFunctionForHex', function (value, element) {
             return value.match(/^[a-f0-9]*$/i) !== null;

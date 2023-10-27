@@ -301,19 +301,19 @@ class __TwigTemplate_21d7b14e001bdf7a14ef6f012e1644bcef756a810a279b61968dee23f08
             if (($context["show_comment"] ?? null)) {
                 // line 129
                 echo "            ";
-                $context["comment"] = $this->getAttribute(($context["current_table"] ?? null), "Comment", [], "array");
+                $context["common"] = $this->getAttribute(($context["current_table"] ?? null), "Comment", [], "array");
                 // line 130
                 echo "            <td>
                 ";
                 // line 131
-                if ((twig_length_filter($this->env, ($context["comment"] ?? null)) > ($context["limit_chars"] ?? null))) {
+                if ((twig_length_filter($this->env, ($context["common"] ?? null)) > ($context["limit_chars"] ?? null))) {
                     // line 132
                     echo "                    <abbr title=\"";
-                    echo twig_escape_filter($this->env, ($context["comment"] ?? null), "html", null, true);
+                    echo twig_escape_filter($this->env, ($context["common"] ?? null), "html", null, true);
                     echo "\">
                         ";
                     // line 133
-                    echo twig_escape_filter($this->env, twig_slice($this->env, ($context["comment"] ?? null), 0, ($context["limit_chars"] ?? null)), "html", null, true);
+                    echo twig_escape_filter($this->env, twig_slice($this->env, ($context["common"] ?? null), 0, ($context["limit_chars"] ?? null)), "html", null, true);
                     echo "
                         ...
                     </abbr>
@@ -321,7 +321,7 @@ class __TwigTemplate_21d7b14e001bdf7a14ef6f012e1644bcef756a810a279b61968dee23f08
                 } else {
                     // line 137
                     echo "                    ";
-                    echo twig_escape_filter($this->env, ($context["comment"] ?? null), "html", null, true);
+                    echo twig_escape_filter($this->env, ($context["common"] ?? null), "html", null, true);
                     echo "
                 ";
                 }

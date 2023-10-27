@@ -108,7 +108,7 @@ class DatabaseInterface
      */
     private $_version_str = '5.50.0';
     /**
-     * @var string Server version comment
+     * @var string Server version common
      */
     private $_version_comment = '';
 
@@ -2987,7 +2987,7 @@ class DatabaseInterface
     }
 
     /**
-     * Server version comment
+     * Server version common
      *
      * @return string
      */

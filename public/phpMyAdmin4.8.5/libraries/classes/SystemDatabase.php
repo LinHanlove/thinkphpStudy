@@ -83,7 +83,7 @@ class SystemDatabase
         $new_transformations_sql = sprintf(
             "INSERT INTO %s.%s ("
             . "`db_name`, `table_name`, `column_name`, "
-            . "`comment`, `mimetype`, `transformation`, "
+            . "`common`, `mimetype`, `transformation`, "
             . "`transformation_options`) VALUES",
             Util::backquote($cfgRelation['db']),
             Util::backquote($cfgRelation['column_info'])
@@ -110,7 +110,7 @@ class SystemDatabase
                     isset($column['real_column'])
                     ? $column['real_column']
                     : $column['refering_column'],
-                    $data_row['comment'],
+                    $data_row['common'],
                     $data_row['mimetype'],
                     $data_row['transformation'],
                     $GLOBALS['dbi']->escapeString(

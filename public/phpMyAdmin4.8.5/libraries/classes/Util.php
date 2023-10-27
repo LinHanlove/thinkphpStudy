@@ -4338,7 +4338,7 @@ class Util
                     'creation'    => 'Create_time',
                     'last_update' => 'Update_time',
                     'last_check'  => 'Check_time',
-                    'comment'     => 'Comment',
+                    'common'     => 'Comment',
                 );
 
                 // Make sure the sort type is implemented

@@ -96,10 +96,10 @@ function getFieldName ($table_results, $this_field) {
     // happens when just one row (headings contain no a)
     if (field_name === '') {
         var $heading = $table_results.find('thead').find('th:eq(' + (this_field_index - left_action_skip) + ')').children('span');
-        // may contain column comment enclosed in a span - detach it temporarily to read the column name
+        // may contain column common enclosed in a span - detach it temporarily to read the column name
         var $tempColComment = $heading.children().detach();
         field_name = $heading.text();
-        // re-attach the column comment
+        // re-attach the column common
         $heading.append($tempColComment);
     }
 

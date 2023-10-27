@@ -415,8 +415,8 @@ class CreateAddField
         if (! empty($partition['engine'])) {
             $sqlQuery .= " ENGINE = " . $partition['engine'];
         }
-        if (! empty($partition['comment'])) {
-            $sqlQuery .= " COMMENT = '" . $partition['comment'] . "'";
+        if (! empty($partition['common'])) {
+            $sqlQuery .= " COMMENT = '" . $partition['common'] . "'";
         }
         if (! empty($partition['data_directory'])) {
             $sqlQuery .= " DATA DIRECTORY = '" . $partition['data_directory'] . "'";
@@ -486,9 +486,9 @@ class CreateAddField
             $sqlQuery .= " CONNECTION = '"
                 . $this->dbi->escapeString($_POST['connection']) . "'";
         }
-        if (!empty($_POST['comment'])) {
+        if (!empty($_POST['common'])) {
             $sqlQuery .= ' COMMENT = \''
-                . $this->dbi->escapeString($_POST['comment']) . '\'';
+                . $this->dbi->escapeString($_POST['common']) . '\'';
         }
         $sqlQuery .= $this->getPartitionsDefinition();
         $sqlQuery .= ';';

@@ -255,7 +255,7 @@ class ZipExtension
                 . pack('V', $unc_len)            // uncompressed filesize
                 . pack('v', strlen($temp_name))  // length of filename
                 . pack('v', 0)                   // extra field length
-                . pack('v', 0)                   // file comment length
+                . pack('v', 0)                   // file common length
                 . pack('v', 0)                   // disk number start
                 . pack('v', 0)                   // internal file attributes
                 . pack('V', 32)                  // external file attributes
@@ -263,7 +263,7 @@ class ZipExtension
                 . pack('V', $old_offset)         // relative offset of local header
                 . $temp_name;                    // filename
             $old_offset += strlen($fr);
-            // optional extra field, file comment goes here
+            // optional extra field, file common goes here
             // save to central directory
             $ctrl_dir[] = $cdrec;
         }
@@ -276,7 +276,7 @@ class ZipExtension
             pack('v', sizeof($ctrl_dir)) . //total #of entries overall
             pack('V', strlen($temp_ctrldir)) . //size of central dir
             pack('V', $old_offset) . //offset to start of central dir
-            "\x00\x00";                         //.zip file comment length
+            "\x00\x00";                         //.zip file common length
 
         $data = implode('', $datasec);
 

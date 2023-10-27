@@ -17,3 +17,9 @@ Route::get('think', function () {
 Route::get('hello/:name', 'index/hello');
 
 Route::get('ad/:id', 'Address/details');
+
+// 资源管理
+Route::resource('user', 'User');
+Route::resource('user.common', 'Comment');
+Route::rule('url', 'Url/index');
+Route::rule('url/:id', 'Url/details');

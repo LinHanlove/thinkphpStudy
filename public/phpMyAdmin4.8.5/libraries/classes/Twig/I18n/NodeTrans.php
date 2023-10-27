@@ -86,7 +86,7 @@ class NodeTrans extends TransNode
         if ($this->hasNode('notes')) {
             $message = trim($this->getNode('notes')->getAttribute('data'));
 
-            // line breaks are not allowed cause we want a single line comment
+            // line breaks are not allowed cause we want a single line common
             $message = str_replace(array("\n", "\r"), ' ', $message);
             $compiler->write("// l10n: {$message}\n");
         }

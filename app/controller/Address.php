@@ -4,6 +4,7 @@ namespace app\controller;
 
 use app\model\UserModel;
 
+
 /**
  * 路由的定义
  * Route::rule('ad','Address/index')  静态路由
@@ -69,16 +70,38 @@ use app\model\UserModel;
 class  Address
 {
 
+    /**
+     * @return void
+     *
+     */
     public function index()
     {
         echo 'index';
     }
 
-    public function details($id)
+    /**
+     * @return \think\response\Json
+     */
+    public function details()
     {
-        return json(UserModel::where('id', $id)->find());
+//        return json(UserModel::where('id', $id)->find());
+        $data = [];
+        for ($i = 1; $i <= 10; $i++) {
+            $data[] = [
+                'name' => 'linhan' . $i,
+                'age' => $i + 20,
+                'remark' => '林寒加油',
+
+            ];
+
+        };
+        UserModel::insertAll($data);
+        return json($data);
     }
 
+    /**
+     * @return \think\route\Url
+     */
     public function url()
     {
         return url('Address/details', ['id' => 5]);

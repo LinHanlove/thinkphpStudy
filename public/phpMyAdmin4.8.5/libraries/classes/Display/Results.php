@@ -1195,7 +1195,7 @@ class Results
                 ? true
                 : false;
 
-            // Prepare comment-HTML-wrappers for each row, if defined/enabled.
+            // Prepare common-HTML-wrappers for each row, if defined/enabled.
             $comments = $this->_getCommentForRow($comments_map, $fields_meta[$i]);
             $display_params = $this->__get('display_params');
 
@@ -1765,7 +1765,7 @@ class Results
     }
 
     /**
-     * Get comment for row
+     * Get common for row
      *
      * @param array $commentsMap comments array
      * @param array $fieldsMeta  set of field properties
@@ -1794,7 +1794,7 @@ class Results
      * @param integer $column_index                the index of the column
      * @param string  $unsorted_sql_query          the unsorted sql query
      * @param integer $session_max_rows            maximum rows resulted by sql
-     * @param string  $comments                    comment for row
+     * @param string  $comments                    common for row
      * @param array   $sort_direction              sort direction
      * @param boolean $col_visib                   column is visible(false)
      *        array                                column isn't visible(string array)
@@ -2196,7 +2196,7 @@ class Results
      * @param string  $col_visib_j element of $col_visib array
      * @param array   $fields_meta set of field properties
      * @param string  $order_link  the order link
-     * @param string  $comments    the comment for the column
+     * @param string  $comments    the common for the column
      *
      * @return  string  $draggable_html     html content
      *
@@ -2244,7 +2244,7 @@ class Results
      * @param string  $col_visib_j     element of $col_visib array
      * @param boolean $condition_field whether to add CSS class condition
      * @param array   $fields_meta     set of field properties
-     * @param string  $comments        the comment for the column
+     * @param string  $comments        the common for the column
      *
      * @return  string  $draggable_html         html content
      *

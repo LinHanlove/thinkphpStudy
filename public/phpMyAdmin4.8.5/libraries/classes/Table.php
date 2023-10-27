@@ -362,7 +362,7 @@ class Table
     /**
      * Returns the comments for current table.
      *
-     * @return string Return comment info if it is set for the selected table or return blank.
+     * @return string Return common info if it is set for the selected table or return blank.
      */
     public function getComment() {
         $table_comment = $this->getStatusInfo('TABLE_COMMENT', false, true);
@@ -461,7 +461,7 @@ class Table
      * @param string      $default_value default value for USER_DEFINED
      *                                   default type
      * @param string      $extra         'AUTO_INCREMENT'
-     * @param string      $comment       field comment
+     * @param string      $comment       field common
      * @param string      $virtuality    virtuality of the column
      * @param string      $expression    expression for the virtual column
      * @param string      $move_to       new position for column
@@ -744,7 +744,7 @@ class Table
      * @param string      $default_value default value for USER_DEFINED default
      *                                   type
      * @param string      $extra         'AUTO_INCREMENT'
-     * @param string      $comment       field comment
+     * @param string      $comment       field common
      * @param string      $virtuality    virtuality of the column
      * @param string      $expression    expression for the virtual column
      * @param string      $move_to       new position for column
@@ -1220,7 +1220,7 @@ class Table
         if ($GLOBALS['cfgRelation']['commwork']) {
             // Get all comments and MIME-Types for current table
             $comments_copy_rs = $relation->queryAsControlUser(
-                'SELECT column_name, comment'
+                'SELECT column_name, common'
                 . ($GLOBALS['cfgRelation']['mimework']
                 ? ', mimetype, transformation, transformation_options'
                 : '')
@@ -1236,7 +1236,7 @@ class Table
                 . $GLOBALS['dbi']->escapeString($source_table) . '\''
             );
 
-            // Write every comment as new copied entry. [MIME]
+            // Write every common as new copied entry. [MIME]
             while ($comments_copy_row
                 = $GLOBALS['dbi']->fetchAssoc($comments_copy_rs)) {
                 $new_comment_query = 'REPLACE INTO '
@@ -1244,7 +1244,7 @@ class Table
                     . '.' . Util::backquote(
                         $GLOBALS['cfgRelation']['column_info']
                     )
-                    . ' (db_name, table_name, column_name, comment'
+                    . ' (db_name, table_name, column_name, common'
                     . ($GLOBALS['cfgRelation']['mimework']
                         ? ', mimetype, transformation, transformation_options'
                         : '')
@@ -1252,7 +1252,7 @@ class Table
                     . '\',\'' . $GLOBALS['dbi']->escapeString($target_table) . '\',\''
                     . $GLOBALS['dbi']->escapeString($comments_copy_row['column_name'])
                     . '\',\''
-                    . $GLOBALS['dbi']->escapeString($comments_copy_row['comment'])
+                    . $GLOBALS['dbi']->escapeString($comments_copy_row['common'])
                     . '\''
                     . ($GLOBALS['cfgRelation']['mimework']
                         ? ',\'' . $GLOBALS['dbi']->escapeString(

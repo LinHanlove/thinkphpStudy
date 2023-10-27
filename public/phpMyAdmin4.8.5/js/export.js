@@ -280,20 +280,20 @@ AJAX.registerOnload('export.js', function () {
     });
 
     /**
-     * Toggles the enabling and disabling of the SQL plugin's comment options that apply only when exporting structure
+     * Toggles the enabling and disabling of the SQL plugin's common options that apply only when exporting structure
      */
     $('input[type=\'radio\'][name=\'sql_structure_or_data\']').change(function () {
         var comments_are_present = $('#checkbox_sql_include_comments').prop('checked');
         var show = $('input[type=\'radio\'][name=\'sql_structure_or_data\']:checked').val();
         if (show === 'data') {
-            // disable the SQL comment options
+            // disable the SQL common options
             if (comments_are_present) {
                 $('#checkbox_sql_dates').prop('disabled', true).parent().fadeTo('fast', 0.4);
             }
             $('#checkbox_sql_relation').prop('disabled', true).parent().fadeTo('fast', 0.4);
             $('#checkbox_sql_mime').prop('disabled', true).parent().fadeTo('fast', 0.4);
         } else {
-            // enable the SQL comment options
+            // enable the SQL common options
             if (comments_are_present) {
                 $('#checkbox_sql_dates').prop('disabled', false).parent().fadeTo('fast', 1);
             }
@@ -427,7 +427,7 @@ function toggle_sql_include_comments () {
             $ulIncludeComments.find('> li').fadeTo('fast', 0.4);
             $ulIncludeComments.find('> li > input').prop('disabled', true);
         } else {
-            // If structure is not being exported, the comment options for structure should not be enabled
+            // If structure is not being exported, the common options for structure should not be enabled
             if ($('#radio_sql_structure_or_data_data').prop('checked')) {
                 $('#text_sql_header_comment').prop('disabled', false).parent('li').fadeTo('fast', 1);
             } else {

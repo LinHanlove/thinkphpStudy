@@ -72,7 +72,7 @@ if (isset($_POST['do_save_data'])) {
     $result = $GLOBALS['dbi']->tryQuery($sql_query);
 
     if ($result) {
-        // Update comment table for mime types [MIME]
+        // Update common table for mime types [MIME]
         if (isset($_POST['field_mimetype'])
             && is_array($_POST['field_mimetype'])
             && $cfg['BrowseMIME']

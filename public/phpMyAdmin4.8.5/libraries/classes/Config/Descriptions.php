@@ -35,7 +35,7 @@ class Descriptions
         );
         $value = self::getString($key, $type);
 
-        /* Fallback to path for name and empty string for description and comment */
+        /* Fallback to path for name and empty string for description and common */
         if (is_null($value)) {
             if ($type == 'name') {
                 $value = $path;

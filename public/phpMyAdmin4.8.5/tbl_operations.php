@@ -114,7 +114,7 @@ if (isset($_POST['table_maintenance'])) {
     unset($result);
 }
 /**
- * Updates table comment, type and options if required
+ * Updates table common, type and options if required
  */
 if (isset($_POST['submitoptions'])) {
     $_message = '';
@@ -346,14 +346,14 @@ $response->addHTML($operations->getHtmlForMoveTable());
 
 if (mb_strstr($show_comment, '; InnoDB free') === false) {
     if (mb_strstr($show_comment, 'InnoDB free') === false) {
-        // only user entered comment
+        // only user entered common
         $comment = $show_comment;
     } else {
         // here we have just InnoDB generated part
         $comment = '';
     }
 } else {
-    // remove InnoDB comment from end, just the minimal part (*? is non greedy)
+    // remove InnoDB common from end, just the minimal part (*? is non greedy)
     $comment = preg_replace('@; InnoDB free:.*?$@', '', $show_comment);
 }
 

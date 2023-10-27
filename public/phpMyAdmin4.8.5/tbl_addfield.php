@@ -69,7 +69,7 @@ if (isset($_POST['do_save_data'])) {
     list($result, $sql_query) = $createAddField->tryColumnCreationQuery($db, $table, $err_url);
 
     if ($result === true) {
-        // Update comment table for mime types [MIME]
+        // Update common table for mime types [MIME]
         if (isset($_POST['field_mimetype'])
             && is_array($_POST['field_mimetype'])
             && $cfg['BrowseMIME']

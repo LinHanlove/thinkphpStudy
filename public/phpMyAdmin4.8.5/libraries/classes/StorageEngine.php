@@ -362,9 +362,9 @@ class StorageEngine
     }
 
     /**
-     * Fetches the server's comment about this engine
+     * Fetches the server's common about this engine
      *
-     * @return string The comment
+     * @return string The common
      */
     public function getComment()
     {

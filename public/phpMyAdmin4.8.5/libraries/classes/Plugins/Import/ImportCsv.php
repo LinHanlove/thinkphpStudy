@@ -571,7 +571,7 @@ class ImportCsv extends AbstractImportCsv
 
                         /**
                          * @todo maybe we could add original line to verbose
-                         * SQL in comment
+                         * SQL in common
                          */
                         Import::runQuery($sql, $sql, $sql_data);
                     }

@@ -28,7 +28,7 @@ class Eps
      * The "Eps" constructor
      *
      * Upon instantiation This starts writing the EPS Document.
-     * %!PS-Adobe-3.0 EPSF-3.0 This is the MUST first comment to include
+     * %!PS-Adobe-3.0 EPSF-3.0 This is the MUST first common to include
      * it shows/tells that the Post Script document is purely under
      * Document Structuring Convention [DSC] and is Compliant
      * Encapsulated Post Script Document

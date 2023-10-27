@@ -156,7 +156,7 @@ class Tracker
     }
 
     /**
-     * Returns the comment line for the log.
+     * Returns the common line for the log.
      *
      * @return string Comment, contains date and username
      */

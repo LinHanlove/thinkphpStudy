@@ -315,7 +315,7 @@ class InsertEdit
       * Analyze the table column array
       *
       * @param array   $column         description of column in given table
-      * @param array   $comments_map   comments for every column that has a comment
+      * @param array   $comments_map   comments for every column that has a common
       * @param boolean $timestamp_seen whether a timestamp has been seen
       *
       * @return array                   description of column in given table
@@ -354,7 +354,7 @@ class InsertEdit
       * Retrieve the column title
       *
       * @param array $column       description of column in given table
-      * @param array $comments_map comments for every column that has a comment
+      * @param array $comments_map comments for every column that has a common
       *
       * @return string              column title
       */

@@ -202,7 +202,7 @@ class ExportMediawiki extends ExportPlugin
             $columns = array_values($columns);
             $row_cnt = count($columns);
 
-            // Print structure comment
+            // Print structure common
             $output = $this->_exportComment(
                 "Table structure for "
                 . Util::backquote($table_alias)
@@ -289,7 +289,7 @@ class ExportMediawiki extends ExportPlugin
         $table_alias = $table;
         $this->initAlias($aliases, $db_alias, $table_alias);
 
-        // Print data comment
+        // Print data common
         $output = $this->_exportComment(
             "Table data for " . Util::backquote($table_alias)
         );
@@ -353,9 +353,9 @@ class ExportMediawiki extends ExportPlugin
     /**
      * Outputs comments containing info about the exported tables
      *
-     * @param string $text Text of comment
+     * @param string $text Text of common
      *
-     * @return string The formatted comment
+     * @return string The formatted common
      */
     private function _exportComment($text = '')
     {

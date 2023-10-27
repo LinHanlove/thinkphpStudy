@@ -151,7 +151,7 @@ class TableStatsDia extends TableStats
             <dia:attribute name="name">
                 <dia:string>#' . $this->tableName . '#</dia:string>
             </dia:attribute>
-            <dia:attribute name="comment">
+            <dia:attribute name="common">
                 <dia:string>##</dia:string>
             </dia:attribute>
             <dia:attribute name="visible_comment">
@@ -198,7 +198,7 @@ class TableStatsDia extends TableStats
                 <dia:attribute name="type">
                     <dia:string>##</dia:string>
                 </dia:attribute>
-                    <dia:attribute name="comment">
+                    <dia:attribute name="common">
                 <dia:string>##</dia:string>
                 </dia:attribute>'
             );

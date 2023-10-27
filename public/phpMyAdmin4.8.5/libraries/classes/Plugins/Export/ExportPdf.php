@@ -296,7 +296,7 @@ class ExportPdf extends ExportPlugin
         );
         $pdf->setAttributes($attr);
         /**
-         * comment display set true as presently in pdf
+         * common display set true as presently in pdf
          * format, no option is present to take user input.
          */
         $do_comments = true;

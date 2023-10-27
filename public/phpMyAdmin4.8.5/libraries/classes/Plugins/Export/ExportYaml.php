@@ -176,7 +176,7 @@ class ExportYaml extends ExportPlugin
         while ($record = $GLOBALS['dbi']->fetchRow($result)) {
             $record_cnt++;
 
-            // Output table name as comment if this is the first record of the table
+            // Output table name as common if this is the first record of the table
             if ($record_cnt == 1) {
                 $buffer = '# ' . $db_alias . '.' . $table_alias . $crlf;
                 $buffer .= '-' . $crlf;

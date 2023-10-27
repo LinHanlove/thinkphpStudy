@@ -71,7 +71,7 @@ if (!isset($partitionDetails)) {
                     'value_type' => '',
                     'value' => '',
                     'engine' => '',
-                    'comment' => '',
+                    'common' => '',
                     'data_directory' => '',
                     'index_directory' => '',
                     'max_rows' => '',
@@ -91,7 +91,7 @@ if (!isset($partitionDetails)) {
             }
             if (! isset($partition['engine'])) { // When removing subpartitioning
                 $partition['engine'] = '';
-                $partition['comment'] = '';
+                $partition['common'] = '';
                 $partition['data_directory'] = '';
                 $partition['index_directory'] = '';
                 $partition['max_rows'] = '';
@@ -119,7 +119,7 @@ if (!isset($partitionDetails)) {
                         $subpartitions[$j] = array(
                             'name' => $partition['name'] . '_s' . $j,
                             'engine' => '',
-                            'comment' => '',
+                            'common' => '',
                             'data_directory' => '',
                             'index_directory' => '',
                             'max_rows' => '',

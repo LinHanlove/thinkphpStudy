@@ -892,7 +892,7 @@ class Relation
      * @param string $db    the name of the db to check for
      * @param string $table the name of the table to check for
      *
-     * @return array    [column_name] = comment
+     * @return array    [column_name] = common
      *
      * @access  public
      */
@@ -918,11 +918,11 @@ class Relation
     }
 
     /**
-     * Gets the comment for a db
+     * Gets the common for a db
      *
      * @param string $db the name of the db to check for
      *
-     * @return string   comment
+     * @return string   common
      *
      * @access  public
      */
@@ -932,9 +932,9 @@ class Relation
         $comment = '';
 
         if ($cfgRelation['commwork']) {
-            // pmadb internal db comment
+            // pmadb internal db common
             $com_qry = "
-                SELECT `comment`
+                SELECT `common`
                 FROM " . Util::backquote($cfgRelation['db'])
                     . "." . Util::backquote($cfgRelation['column_info'])
                     . "
@@ -947,7 +947,7 @@ class Relation
 
             if ($com_rs && $GLOBALS['dbi']->numRows($com_rs) > 0) {
                 $row = $GLOBALS['dbi']->fetchAssoc($com_rs);
-                $comment = $row['comment'];
+                $comment = $row['common'];
             }
             $GLOBALS['dbi']->freeResult($com_rs);
         }
@@ -956,11 +956,11 @@ class Relation
     }
 
     /**
-     * Gets the comment for a db
+     * Gets the common for a db
      *
      * @access  public
      *
-     * @return string   comment
+     * @return string   common
      */
     public function getDbComments()
     {
@@ -968,9 +968,9 @@ class Relation
         $comments = array();
 
         if ($cfgRelation['commwork']) {
-            // pmadb internal db comment
+            // pmadb internal db common
             $com_qry = "
-                SELECT `db_name`, `comment`
+                SELECT `db_name`, `common`
                 FROM " . Util::backquote($cfgRelation['db'])
                     . "." . Util::backquote($cfgRelation['column_info'])
                     . "
@@ -981,7 +981,7 @@ class Relation
 
             if ($com_rs && $GLOBALS['dbi']->numRows($com_rs) > 0) {
                 while ($row = $GLOBALS['dbi']->fetchAssoc($com_rs)) {
-                    $comments[$row['db_name']] = $row['comment'];
+                    $comments[$row['db_name']] = $row['common'];
                 }
             }
             $GLOBALS['dbi']->freeResult($com_rs);
@@ -991,12 +991,12 @@ class Relation
     }
 
     /**
-     * Set a database comment to a certain value.
+     * Set a database common to a certain value.
      *
      * @param string $db      the name of the db
      * @param string $comment the value of the column
      *
-     * @return boolean  true, if comment-query was made.
+     * @return boolean  true, if common-query was made.
      *
      * @access  public
      */
@@ -1012,14 +1012,14 @@ class Relation
             $upd_query = 'INSERT INTO '
                 . Util::backquote($cfgRelation['db']) . '.'
                 . Util::backquote($cfgRelation['column_info'])
-                . ' (`db_name`, `table_name`, `column_name`, `comment`)'
+                . ' (`db_name`, `table_name`, `column_name`, `common`)'
                 . ' VALUES (\''
                 . $GLOBALS['dbi']->escapeString($db)
                 . "', '', '(db_comment)', '"
                 . $GLOBALS['dbi']->escapeString($comment)
                 . "') "
                 . ' ON DUPLICATE KEY UPDATE '
-                . "`comment` = '" . $GLOBALS['dbi']->escapeString($comment) . "'";
+                . "`common` = '" . $GLOBALS['dbi']->escapeString($comment) . "'";
         } else {
             $upd_query = 'DELETE FROM '
                 . Util::backquote($cfgRelation['db']) . '.'

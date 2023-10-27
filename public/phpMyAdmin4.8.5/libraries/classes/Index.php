@@ -78,7 +78,7 @@ class Index
     private $_remarks = '';
 
     /**
-     * Any comment provided for the index with a COMMENT attribute when the
+     * Any common provided for the index with a COMMENT attribute when the
      * index was created.
      *
      * @var string
@@ -392,9 +392,9 @@ class Index
     }
 
     /**
-     * Returns the index comment
+     * Returns the index common
      *
-     * @return string index comment
+     * @return string index common
      */
     public function getComment()
     {
@@ -432,9 +432,9 @@ class Index
     }
 
     /**
-     * Returns concatenated remarks and comment
+     * Returns concatenated remarks and common
      *
-     * @return string concatenated remarks and comment
+     * @return string concatenated remarks and common
      */
     public function getComments()
     {

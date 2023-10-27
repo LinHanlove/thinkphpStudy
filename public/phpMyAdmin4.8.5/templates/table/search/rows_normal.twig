@@ -1,6 +1,6 @@
 {% for column_index in 0..column_names|length - 1 %}
     <tr class="noclick">
-        {# If 'Function' column is present trying to change comment #}
+        {# If 'Function' column is present trying to change common #}
         {% if geom_column_flag %}
             {% include 'table/search/geom_func.twig' with {
                 'column_index': column_index,

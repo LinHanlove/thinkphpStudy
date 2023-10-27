@@ -1104,7 +1104,7 @@ $cfg['ShowCreateDb'] = true;
 $cfg['ShowDbStructureCharset'] = false;
 
 /**
- * show comment column in database structure (true|false)?
+ * show common column in database structure (true|false)?
  *
  * @global boolean $cfg['ShowDbStructureComment']
  */

@@ -90,7 +90,7 @@ class RteList
             $retval .= "            <th>" . __('Type') . "</th>\n";
             $retval .= "            <th>" . __('Returns') . "</th>\n";
             $retval .= "        </tr>\n";
-            $retval .= "        <tr class='hide'>\n"; // see comment above
+            $retval .= "        <tr class='hide'>\n"; // see common above
             for ($i = 0; $i < 7; $i++) {
                 $retval .= "            <td></td>\n";
             }
@@ -105,7 +105,7 @@ class RteList
             $retval .= "            <th>" . __('Time') . "</th>\n";
             $retval .= "            <th>" . __('Event') . "</th>\n";
             $retval .= "        </tr>\n";
-            $retval .= "        <tr class='hide'>\n"; // see comment above
+            $retval .= "        <tr class='hide'>\n"; // see common above
             for ($i = 0; $i < (empty($table) ? 7 : 6); $i++) {
                 $retval .= "            <td></td>\n";
             }
@@ -117,7 +117,7 @@ class RteList
             $retval .= "            <th colspan='3'>" . __('Action') . "</th>\n";
             $retval .= "            <th>" . __('Type') . "</th>\n";
             $retval .= "        </tr>\n";
-            $retval .= "        <tr class='hide'>\n"; // see comment above
+            $retval .= "        <tr class='hide'>\n"; // see common above
             for ($i = 0; $i < 6; $i++) {
                 $retval .= "            <td></td>\n";
             }

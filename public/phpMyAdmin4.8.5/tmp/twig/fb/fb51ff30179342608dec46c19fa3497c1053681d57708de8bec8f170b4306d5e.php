@@ -167,12 +167,12 @@ class __TwigTemplate_c79072724d5d6fa9c1a10230ebcbe8763cbe37e7c26ef75f967fa88e65c
             <tr>
                 <td>
                     <input type=\"text\"
-                        name=\"comment\"
+                        name=\"common\"
                         size=\"40\"
                         maxlength=\"60\"
                         value=\"";
             // line 92
-            echo twig_escape_filter($this->env, (((isset($context["comment"]) || array_key_exists("comment", $context))) ? (($context["comment"] ?? null)) : ("")), "html", null, true);
+            echo twig_escape_filter($this->env, (((isset($context["common"]) || array_key_exists("common", $context))) ? (($context["common"] ?? null)) : ("")), "html", null, true);
             echo "\"
                         class=\"textfield\" />
                 </td>

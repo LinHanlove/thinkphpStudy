@@ -68,7 +68,7 @@ class ExportPhparray extends ExportPlugin
     }
 
     /**
-     * Removes end of comment from a string
+     * Removes end of common from a string
      *
      * @param string $string String to replace
      *
@@ -221,7 +221,7 @@ class ExportPhparray extends ExportPlugin
 
         $buffer = '';
         $record_cnt = 0;
-        // Output table name as comment
+        // Output table name as common
         $buffer .= $crlf . '/* '
             . $this->commentString(Util::backquote($db_alias)) . '.'
             . $this->commentString(Util::backquote($table_alias)) . ' */' . $crlf;

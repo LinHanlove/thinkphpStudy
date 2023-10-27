@@ -278,7 +278,7 @@ class Menu
                 );
 
                 /**
-                 * Displays table comment
+                 * Displays table common
                  */
                 if (! empty($show_comment)
                     && ! isset($GLOBALS['avoid_show_comment'])
@@ -298,7 +298,7 @@ class Menu
                     $retval .= '</span>';
                 } // end if
             } else {
-                // no table selected, display database comment if present
+                // no table selected, display database common if present
                 $cfgRelation = $this->relation->getRelationsParam();
 
                 // Get additional information about tables for tooltip is done
@@ -306,7 +306,7 @@ class Menu
                 if ($cfgRelation['commwork']) {
                     $comment = $this->relation->getDbComment($this->_db);
                     /**
-                     * Displays table comment
+                     * Displays table common
                      */
                     if (! empty($comment)) {
                         $retval .= '<span class="table_comment"'

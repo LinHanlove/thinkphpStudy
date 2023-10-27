@@ -61,12 +61,12 @@ $GLOBALS['dummy_queries'] = array(
             array(
                 'Engine'  => 'dummy',
                 'Support' => 'YES',
-                'Comment' => 'dummy comment',
+                'Comment' => 'dummy common',
             ),
             array(
                 'Engine'  => 'dummy2',
                 'Support' => 'NO',
-                'Comment' => 'dummy2 comment',
+                'Comment' => 'dummy2 common',
             ),
             array(
                 'Engine'  => 'FEDERATED',

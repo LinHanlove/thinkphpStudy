@@ -286,7 +286,7 @@ class File
         switch ($file['error']) {
         // we do not use the PHP constants here cause not all constants
         // are defined in all versions of PHP - but the correct constants names
-        // are given as comment
+        // are given as common
         case 0: //UPLOAD_ERR_OK:
             return $this->setUploadedFile($file['tmp_name']);
         case 4: //UPLOAD_ERR_NO_FILE:

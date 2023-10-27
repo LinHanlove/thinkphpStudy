@@ -136,7 +136,7 @@ class __TwigTemplate_188c6bd4fbec8d6c4fb904a57a306b8326bcc3833a6986f9dd0293fde8c
         if (($context["show_comment"] ?? null)) {
             // line 48
             echo "                <th>";
-            echo PhpMyAdmin\Util::sortableTableHeader(_gettext("Comment"), "comment");
+            echo PhpMyAdmin\Util::sortableTableHeader(_gettext("Comment"), "common");
             echo "</th>
             ";
         }

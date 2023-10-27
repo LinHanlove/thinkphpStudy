@@ -87,7 +87,7 @@ class ServerEnginesController extends Controller
             array(
                 'title' => $engine->getTitle(),
                 'help_page' => $engine->getMysqlHelpPage(),
-                'comment' => $engine->getComment(),
+                'common' => $engine->getComment(),
                 'info_pages' => $engine->getInfoPages(),
                 'support' => $engine->getSupportInformationMessage(),
                 'variables' => $engine->getHtmlVariables(),

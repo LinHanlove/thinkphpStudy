@@ -124,12 +124,12 @@ class FormDisplayTemplate
      * o show_restore_default - (boolean) whether show "restore default" button
      * o userprefs_allow - whether user preferences are enabled for this field
      *                    (null - no support, true/false - enabled/disabled)
-     * o userprefs_comment - (string) field comment
+     * o userprefs_comment - (string) field common
      * o values - key - value pairs for <select> fields
      * o values_escaped - (boolean) tells whether values array is already escaped
      *                    (defaults to false)
      * o values_disabled -  (array)list of disabled values (keys from values)
-     * o comment - (string) tooltip comment
+     * o common - (string) tooltip common
      * o comment_warning - (bool) whether this comments warns about something
      *
      * @param string     $path             config option path
@@ -310,19 +310,19 @@ class FormDisplayTemplate
                 . '>' . htmlspecialchars(implode("\n", $value)) . '</textarea>';
             break;
         }
-        if (isset($opts['comment']) && $opts['comment']) {
-            $class = 'field-comment-mark';
+        if (isset($opts['common']) && $opts['common']) {
+            $class = 'field-common-mark';
             if (isset($opts['comment_warning']) && $opts['comment_warning']) {
-                $class .= ' field-comment-warning';
+                $class .= ' field-common-warning';
             }
             $htmlOutput .= '<span class="' . $class . '" title="'
-                . htmlspecialchars($opts['comment']) . '">i</span>';
+                . htmlspecialchars($opts['common']) . '">i</span>';
         }
         if ($is_setup_script
             && isset($opts['userprefs_comment'])
             && $opts['userprefs_comment']
         ) {
-            $htmlOutput .= '<a class="userprefs-comment" title="'
+            $htmlOutput .= '<a class="userprefs-common" title="'
                 . htmlspecialchars($opts['userprefs_comment']) . '">'
                 . $icons['tblops'] . '</a>';
         }

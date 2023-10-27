@@ -41,7 +41,7 @@ class Operations
     }
 
     /**
-     * Get HTML output for database comment
+     * Get HTML output for database common
      *
      * @param string $db database name
      *
@@ -57,9 +57,9 @@ class Operations
         if (Util::showIcons('ActionLinksMode')) {
             $html_output .= Util::getImage('b_comment') . '&nbsp;';
         }
-        $html_output .=  __('Database comment');
+        $html_output .=  __('Database common');
         $html_output .= '</legend>';
-        $html_output .= '<input type="text" name="comment" '
+        $html_output .= '<input type="text" name="common" '
             . 'class="textfield"'
             . 'value="' . htmlspecialchars($this->relation->getDbComment($db)) . '" />'
             . '</fieldset>';
@@ -990,7 +990,7 @@ class Operations
     {
         $commentLength = $GLOBALS['dbi']->getVersion() >= 50503 ? 2048 : 60;
         $html_output = '<tr><td class="vmiddle">' . __('Table comments') . '</td>'
-            . '<td><input type="text" name="comment" '
+            . '<td><input type="text" name="common" '
             . 'maxlength="' . $commentLength . '"'
             . 'value="' . htmlspecialchars($current_value) . '" />'
             . '<input type="hidden" name="prev_comment" value="'
@@ -1774,11 +1774,11 @@ class Operations
 
         $table_alters = array();
 
-        if (isset($_POST['comment'])
-            && urldecode($_POST['prev_comment']) !== $_POST['comment']
+        if (isset($_POST['common'])
+            && urldecode($_POST['prev_comment']) !== $_POST['common']
         ) {
             $table_alters[] = 'COMMENT = \''
-                . $GLOBALS['dbi']->escapeString($_POST['comment']) . '\'';
+                . $GLOBALS['dbi']->escapeString($_POST['common']) . '\'';
         }
 
         if (! empty($newTblStorageEngine)

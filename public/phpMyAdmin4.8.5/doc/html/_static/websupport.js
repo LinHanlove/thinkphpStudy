@@ -50,7 +50,7 @@
   }
 
   function initEvents() {
-    $(document).on("click", 'a.comment-close', function(event) {
+    $(document).on("click", 'a.common-close', function(event) {
       event.preventDefault();
       hide($(this).attr('id').substring(2));
     });
@@ -86,15 +86,15 @@
       event.preventDefault();
       hideProposeChange($(this).attr('id').substring(2));
     });
-    $(document).on("click", 'a.accept-comment', function(event) {
+    $(document).on("click", 'a.accept-common', function(event) {
       event.preventDefault();
       acceptComment($(this).attr('id').substring(2));
     });
-    $(document).on("click", 'a.delete-comment', function(event) {
+    $(document).on("click", 'a.delete-common', function(event) {
       event.preventDefault();
       deleteComment($(this).attr('id').substring(2));
     });
-    $(document).on("click", 'a.comment-markup', function(event) {
+    $(document).on("click", 'a.common-markup', function(event) {
       event.preventDefault();
       toggleCommentMarkupBox($(this).attr('id').substring(2));
     });
@@ -142,7 +142,7 @@
   }
 
   /**
-   * Show a comment div.
+   * Show a common div.
    */
   function show(id) {
     $('#ao' + id).hide();
@@ -163,7 +163,7 @@
   }
 
   /**
-   * Hide a comment div.
+   * Hide a common div.
    */
   function hide(id) {
     $('#ah' + id).hide();
@@ -211,23 +211,23 @@
   }
 
   /**
-   * Add a comment via ajax and insert the comment into the comment tree.
+   * Add a common via ajax and insert the common into the common tree.
    */
   function addComment(form) {
     var node_id = form.find('input[name="node"]').val();
     var parent_id = form.find('input[name="parent"]').val();
-    var text = form.find('textarea[name="comment"]').val();
+    var text = form.find('textarea[name="common"]').val();
     var proposal = form.find('textarea[name="proposal"]').val();
 
     if (text == '') {
-      showError('Please enter a comment.');
+      showError('Please enter a common.');
       return;
     }
 
     // Disable the form that is being submitted.
     form.find('textarea,input').attr('disabled', 'disabled');
 
-    // Send the comment to the server.
+    // Send the common to the server.
     $.ajax({
       type: "POST",
       url: opts.addCommentURL,
@@ -256,27 +256,27 @@
         var ao = $('#ao' + node_id);
         ao.find('img').attr({'src': opts.commentBrightImage});
         if (node_id) {
-          // if this was a "root" comment, remove the commenting box
-          // (the user can get it back by reopening the comment popup)
+          // if this was a "root" common, remove the commenting box
+          // (the user can get it back by reopening the common popup)
           $('#ca' + node_id).slideUp();
         }
       },
       error: function(request, textStatus, error) {
         form.find('textarea,input').removeAttr('disabled');
-        showError('Oops, there was a problem adding the comment.');
+        showError('Oops, there was a problem adding the common.');
       }
     });
   }
 
   /**
-   * Recursively append comments to the main comment list and children
-   * lists, creating the comment tree.
+   * Recursively append comments to the main common list and children
+   * lists, creating the common tree.
    */
   function appendComments(comments, ul) {
     $.each(comments, function() {
       var div = createCommentDiv(this);
       ul.append($(document.createElement('li')).html(div));
-      appendComments(this.children, div.find('ul.comment-children'));
+      appendComments(this.children, div.find('ul.common-children'));
       // To avoid stagnating data, don't store the comments children in data.
       this.children = null;
       div.data('comment', this);
@@ -284,8 +284,8 @@
   }
 
   /**
-   * After adding a new comment, it must be inserted in the correct
-   * location in the comment tree.
+   * After adding a new common, it must be inserted in the correct
+   * location in the common tree.
    */
   function insertComment(comment) {
     var div = createCommentDiv(comment);
@@ -300,7 +300,7 @@
     var li = $(document.createElement('li'));
     li.hide();
 
-    // Determine where in the parents children list to insert this comment.
+    // Determine where in the parents children list to insert this common.
     for(i=0; i < siblings.length; i++) {
       if (comp(comment, siblings[i]) <= 0) {
         $('#cd' + siblings[i].id)
@@ -311,8 +311,8 @@
       }
     }
 
-    // If we get here, this comment rates lower than all the others,
-    // or it is the only comment in the list.
+    // If we get here, this common rates lower than all the others,
+    // or it is the only common in the list.
     ul.append(li.html(div));
     li.slideDown('fast');
   }
@@ -327,7 +327,7 @@
         $('#cd' + id).removeClass('moderate');
       },
       error: function(request, textStatus, error) {
-        showError('Oops, there was a problem accepting the comment.');
+        showError('Oops, there was a problem accepting the common.');
       }
     });
   }
@@ -340,17 +340,17 @@
       success: function(data, textStatus, request) {
         var div = $('#cd' + id);
         if (data == 'delete') {
-          // Moderator mode: remove the comment and all children immediately
+          // Moderator mode: remove the common and all children immediately
           div.slideUp('fast', function() {
             div.remove();
           });
           return;
         }
-        // User mode: only mark the comment as deleted
+        // User mode: only mark the common as deleted
         div
           .find('span.user-id:first')
           .text('[deleted]').end()
-          .find('div.comment-text:first')
+          .find('div.common-text:first')
           .text('[deleted]').end()
           .find('#cm' + id + ', #dc' + id + ', #ac' + id + ', #rc' + id +
                 ', #sp' + id + ', #hp' + id + ', #cr' + id + ', #rl' + id)
@@ -361,7 +361,7 @@
         div.data('comment', comment);
       },
       error: function(request, textStatus, error) {
-        showError('Oops, there was a problem deleting the comment.');
+        showError('Oops, there was a problem deleting the common.');
       }
     });
   }
@@ -413,7 +413,7 @@
     expiration.setDate(expiration.getDate() + 365);
     document.cookie= 'sortBy=' + escape(by) +
                      ';expires=' + expiration.toUTCString();
-    $('ul.comment-ul').each(function(index, ul) {
+    $('ul.common-ul').each(function(index, ul) {
       var comments = getChildren($(ul), true);
       comments = sortComments(comments);
       appendComments(comments, $(ul).empty());
@@ -451,7 +451,7 @@
     $('#' + id.charAt(0) + (id.charAt(1) == 'u' ? 'v' : 'u') + d.comment_id)
       .show();
 
-    // The div the comment is displayed in.
+    // The div the common is displayed in.
     var div = $('div#cd' + d.comment_id);
     var data = div.data('comment');
 
@@ -483,7 +483,7 @@
   }
 
   /**
-   * Open a reply form used to reply to an existing comment.
+   * Open a reply form used to reply to an existing common.
    */
   function openReply(id) {
     // Swap out the reply link for the hide link
@@ -551,22 +551,22 @@
     return children;
   }
 
-  /** Create a div to display a comment in. */
+  /** Create a div to display a common in. */
   function createCommentDiv(comment) {
     if (!comment.displayed && !opts.moderator) {
-      return $('<div class="moderate">Thank you!  Your comment will show up '
+      return $('<div class="moderate">Thank you!  Your common will show up '
                + 'once it is has been approved by a moderator.</div>');
     }
-    // Prettify the comment rating.
+    // Prettify the common rating.
     comment.pretty_rating = comment.rating + ' point' +
       (comment.rating == 1 ? '' : 's');
     // Make a class (for displaying not yet moderated comments differently)
     comment.css_class = comment.displayed ? '' : ' moderate';
-    // Create a div for this comment.
+    // Create a div for this common.
     var context = $.extend({}, opts, comment);
     var div = $(renderTemplate(commentTemplate, context));
 
-    // If the user has voted on this comment, highlight the correct arrow.
+    // If the user has voted on this common, highlight the correct arrow.
     if (comment.vote) {
       var direction = (comment.vote == 1) ? 'u' : 'd';
       div.find('#' + direction + 'v' + comment.id).hide();
@@ -622,14 +622,14 @@
     return this.each(function() {
       var id = $(this).attr('id').substring(1);
       var count = COMMENT_METADATA[id];
-      var title = count + ' comment' + (count == 1 ? '' : 's');
+      var title = count + ' common' + (count == 1 ? '' : 's');
       var image = count > 0 ? opts.commentBrightImage : opts.commentImage;
       var addcls = count == 0 ? ' nocomment' : '';
       $(this)
         .append(
           $(document.createElement('a')).attr({
             href: '#',
-            'class': 'sphinx-comment-open' + addcls,
+            'class': 'sphinx-common-open' + addcls,
             id: 'ao' + id
           })
             .append($(document.createElement('img')).attr({
@@ -645,7 +645,7 @@
         .append(
           $(document.createElement('a')).attr({
             href: '#',
-            'class': 'sphinx-comment-close hidden',
+            'class': 'sphinx-common-close hidden',
             id: 'ah' + id
           })
             .append($(document.createElement('img')).attr({
@@ -667,10 +667,10 @@
     getCommentsURL: '/_get_comments',
     acceptCommentURL: '/_accept_comment',
     deleteCommentURL: '/_delete_comment',
-    commentImage: '/static/_static/comment.png',
-    closeCommentImage: '/static/_static/comment-close.png',
+    commentImage: '/static/_static/common.png',
+    closeCommentImage: '/static/_static/common-close.png',
     loadingImage: '/static/_static/ajax-loader.gif',
-    commentBrightImage: '/static/_static/comment-bright.png',
+    commentBrightImage: '/static/_static/common-bright.png',
     upArrow: '/static/_static/up.png',
     downArrow: '/static/_static/down.png',
     upArrowPressed: '/static/_static/up-pressed.png',
@@ -691,19 +691,19 @@
         <a href="#" class="sort-option byascage">newest</a>\
         <a href="#" class="sort-option byage">oldest</a>\
       </p>\
-      <div class="comment-header">Comments</div>\
-      <div class="comment-loading" id="cn<%id%>">\
+      <div class="common-header">Comments</div>\
+      <div class="common-loading" id="cn<%id%>">\
         loading comments... <img src="<%loadingImage%>" alt="" /></div>\
-      <ul id="cl<%id%>" class="comment-ul"></ul>\
+      <ul id="cl<%id%>" class="common-ul"></ul>\
       <div id="ca<%id%>">\
-      <p class="add-a-comment">Add a comment\
-        (<a href="#" class="comment-markup" id="ab<%id%>">markup</a>):</p>\
-      <div class="comment-markup-box" id="mb<%id%>">\
+      <p class="add-a-common">Add a common\
+        (<a href="#" class="common-markup" id="ab<%id%>">markup</a>):</p>\
+      <div class="common-markup-box" id="mb<%id%>">\
         reStructured text markup: <i>*emph*</i>, <b>**strong**</b>, \
         <code>``code``</code>, \
         code blocks: <code>::</code> and an indented block after blank line</div>\
-      <form method="post" id="cf<%id%>" class="comment-form" action="">\
-        <textarea name="comment" cols="80"></textarea>\
+      <form method="post" id="cf<%id%>" class="common-form" action="">\
+        <textarea name="common" cols="80"></textarea>\
         <p class="propose-button">\
           <a href="#" id="pc<%id%>" class="show-propose-change">\
             Propose a change &#9657;\
@@ -714,7 +714,7 @@
         </p>\
         <textarea name="proposal" id="pt<%id%>" cols="80"\
                   spellcheck="false"></textarea>\
-        <input type="submit" value="Add comment" />\
+        <input type="submit" value="Add common" />\
         <input type="hidden" name="node" value="<%id%>" />\
         <input type="hidden" name="parent" value="" />\
       </form>\
@@ -722,7 +722,7 @@
     </div>';
 
   var commentTemplate = '\
-    <div id="cd<%id%>" class="sphinx-comment<%css_class%>">\
+    <div id="cd<%id%>" class="sphinx-common<%css_class%>">\
       <div class="vote">\
         <div class="arrow">\
           <a href="#" id="uv<%id%>" class="vote" title="vote up">\
@@ -741,27 +741,27 @@
           </a>\
         </div>\
       </div>\
-      <div class="comment-content">\
-        <p class="tagline comment">\
+      <div class="common-content">\
+        <p class="tagline common">\
           <span class="user-id"><%username%></span>\
           <span class="rating"><%pretty_rating%></span>\
           <span class="delta"><%time.delta%></span>\
         </p>\
-        <div class="comment-text comment"><#text#></div>\
-        <p class="comment-opts comment">\
+        <div class="common-text common"><#text#></div>\
+        <p class="common-opts common">\
           <a href="#" class="reply hidden" id="rl<%id%>">reply &#9657;</a>\
           <a href="#" class="close-reply" id="cr<%id%>">reply &#9663;</a>\
           <a href="#" id="sp<%id%>" class="show-proposal">proposal &#9657;</a>\
           <a href="#" id="hp<%id%>" class="hide-proposal">proposal &#9663;</a>\
-          <a href="#" id="dc<%id%>" class="delete-comment hidden">delete</a>\
+          <a href="#" id="dc<%id%>" class="delete-common hidden">delete</a>\
           <span id="cm<%id%>" class="moderation hidden">\
-            <a href="#" id="ac<%id%>" class="accept-comment">accept</a>\
+            <a href="#" id="ac<%id%>" class="accept-common">accept</a>\
           </span>\
         </p>\
         <pre class="proposal" id="pr<%id%>">\
 <#proposal_diff#>\
         </pre>\
-          <ul class="comment-children" id="cl<%id%>"></ul>\
+          <ul class="common-children" id="cl<%id%>"></ul>\
         </div>\
         <div class="clearleft"></div>\
       </div>\
@@ -771,7 +771,7 @@
     <li>\
       <div class="reply-div" id="rd<%id%>">\
         <form id="rf<%id%>">\
-          <textarea name="comment" cols="80"></textarea>\
+          <textarea name="common" cols="80"></textarea>\
           <input type="submit" value="Add reply" />\
           <input type="button" value="Cancel" />\
           <input type="hidden" name="parent" value="<%id%>" />\
@@ -786,8 +786,8 @@
 })(jQuery);
 
 $(document).ready(function() {
-  // add comment anchors for all paragraphs that are commentable
-  $('.sphinx-has-comment').comment();
+  // add common anchors for all paragraphs that are commentable
+  $('.sphinx-has-common').comment();
 
   // highlight search words in search results
   $("div.context").each(function() {
@@ -799,9 +799,9 @@ $(document).ready(function() {
     });
   });
 
-  // directly open comment window if requested
+  // directly open common window if requested
   var anchor = document.location.hash;
-  if (anchor.substring(0, 9) == '#comment-') {
+  if (anchor.substring(0, 9) == '#common-') {
     $('#ao' + anchor.substring(9)).click();
     document.location.hash = '#s' + anchor.substring(9);
   }

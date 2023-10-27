@@ -79,11 +79,11 @@ class ImportMediawiki extends ImportPlugin
         // Will be appended to the first line of the next chunk, if there is one
         $last_chunk_line = '';
 
-        // Remembers whether the current buffer line is part of a comment
+        // Remembers whether the current buffer line is part of a common
         $inside_comment = false;
-        // Remembers whether the current buffer line is part of a data comment
+        // Remembers whether the current buffer line is part of a data common
         $inside_data_comment = false;
-        // Remembers whether the current buffer line is part of a structure comment
+        // Remembers whether the current buffer line is part of a structure common
         $inside_structure_comment = false;
 
         // MediaWiki only accepts "\n" as row terminator
@@ -139,16 +139,16 @@ class ImportMediawiki extends ImportPlugin
                 $first_character = $cur_buffer_line[0];
                 $matches = array();
 
-                // Check beginning of comment
+                // Check beginning of common
                 if (!strcmp(mb_substr($cur_buffer_line, 0, 4), "<!--")) {
                     $inside_comment = true;
                     continue;
                 } elseif ($inside_comment) {
-                    // Check end of comment
+                    // Check end of common
                     if (!strcmp(mb_substr($cur_buffer_line, 0, 4), "-->")
                     ) {
                         // Only data comments are closed. The structure comments
-                        // will be closed when a data comment begins (in order to
+                        // will be closed when a data common begins (in order to
                         // skip structure tables)
                         if ($inside_data_comment) {
                             $inside_data_comment = false;

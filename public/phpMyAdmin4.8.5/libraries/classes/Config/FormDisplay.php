@@ -817,7 +817,7 @@ class FormDisplay
                 );
             }
             /* mbstring is always there thanks to polyfill */
-            $opts['comment'] = $comment;
+            $opts['common'] = $comment;
             $opts['comment_warning'] = true;
         }
         // ZipDump, GZipDump, BZipDump - check function availability
@@ -846,14 +846,14 @@ class FormDisplay
                     $funcs[$system_path][1]
                 );
             }
-            $opts['comment'] = $comment;
+            $opts['common'] = $comment;
             $opts['comment_warning'] = true;
         }
         if (! $GLOBALS['PMA_Config']->get('is_setup')) {
             if (($system_path == 'MaxDbList' || $system_path == 'MaxTableList'
                 || $system_path == 'QueryHistoryMax')
             ) {
-                $opts['comment'] = sprintf(
+                $opts['common'] = sprintf(
                     __('maximum %s'), $GLOBALS['cfg'][$system_path]
                 );
             }

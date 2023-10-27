@@ -51,7 +51,7 @@ class SubPartition
      */
     protected $indexLength;
     /**
-     * @var string partition comment
+     * @var string partition common
      */
     protected $comment;
 
@@ -169,9 +169,9 @@ class SubPartition
     }
 
     /**
-     * Returns the partition comment
+     * Returns the partition common
      *
-     * @return string partition comment
+     * @return string partition common
      */
     public function getComment()
     {

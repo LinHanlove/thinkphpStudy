@@ -108,7 +108,7 @@ class ExportSql extends ExportPlugin
 
             $leaf = new TextPropertyItem(
                 'header_comment',
-                __('Additional custom header comment (\n splits lines):')
+                __('Additional custom header common (\n splits lines):')
             );
             $subgroup->addProperty($leaf);
             $leaf = new BoolPropertyItem(
@@ -588,11 +588,11 @@ class ExportSql extends ExportPlugin
     }
 
     /**
-     * Possibly outputs comment
+     * Possibly outputs common
      *
-     * @param string $text Text of comment
+     * @param string $text Text of common
      *
-     * @return string The formatted comment
+     * @return string The formatted common
      */
     private function _exportComment($text = '')
     {
@@ -1178,7 +1178,7 @@ class ExportSql extends ExportPlugin
                     $sql_query = "SELECT `dbase`, `user`, `label`, `query` FROM ";
                 } elseif ($type == 'column_info') {
                     $sql_query = "SELECT `db_name`, `table_name`, `column_name`,"
-                        . " `comment`, `mimetype`, `transformation`,"
+                        . " `common`, `mimetype`, `transformation`,"
                         . " `transformation_options`, `input_transformation`,"
                         . " `input_transformation_options` FROM";
                 } elseif ($type == 'savedsearches') {
@@ -2826,7 +2826,7 @@ class ExportSql extends ExportPlugin
     }
 
     /**
-     * Generate comment
+     * Generate common
      *
      * @param string $crlf          Carriage return character
      * @param string $sql_statement SQL statement

@@ -5,7 +5,7 @@
  *  - move/rename
  *  - copy
  *  - changing collation
- *  - changing comment
+ *  - changing common
  *  - adding tables
  *  - viewing PDF schemas
  *
@@ -218,8 +218,8 @@ $cfgRelation = $relation->getRelationsParam();
  * Check if comments were updated
  * (must be done before displaying the menu tabs)
  */
-if (isset($_POST['comment'])) {
-    $relation->setDbComment($GLOBALS['db'], $_POST['comment']);
+if (isset($_POST['common'])) {
+    $relation->setDbComment($GLOBALS['db'], $_POST['common']);
 }
 
 require 'libraries/db_common.inc.php';
@@ -253,7 +253,7 @@ $is_information_schema = $GLOBALS['dbi']->isSystemSchema($GLOBALS['db']);
 if (!$is_information_schema) {
     if ($cfgRelation['commwork']) {
         /**
-         * database comment
+         * database common
          */
         $response->addHTML($operations->getHtmlForDatabaseComment($GLOBALS['db']));
     }

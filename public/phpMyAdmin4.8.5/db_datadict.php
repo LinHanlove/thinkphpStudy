@@ -55,10 +55,10 @@ if ($cfgRelation['commwork']) {
     $comment = $relation->getDbComment($db);
 
     /**
-     * Displays DB comment
+     * Displays DB common
      */
     if ($comment) {
-        echo '<p>' , __('Database comment')
+        echo '<p>' , __('Database common')
             , '<br /><i>' , htmlspecialchars($comment) , '</i></p>';
     } // end if
 }
